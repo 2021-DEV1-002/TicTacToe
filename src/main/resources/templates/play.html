@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link th:href="@{/style.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<h1>Play Tic Tac Toe !</h1>
+<br><br>
+<div class="container">
+    <table class="table">
+        <tbody>
+        <tr>
+            <td th:switch="${grid[0][0]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                            <form action="#" th:action="@{/play}" th:object="${cellinformation}" method="get">
+                        <span name="cellY" th:value="0"></span>
+                        <span name="cellX" th:value="0"></span>
+                        <input type="submit">
+                            </form>
+                    </span>
+            </td>
+            <td th:switch="${grid[0][1]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                    <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                          method="get">
+                        <span name="cellY" th:value="0"></span>
+                        <span name="cellX" th:value="1"></span>
+                        <input type="submit">
+                                                    </form>
+                    </span>
+            </td>
+            <td th:switch="${grid[0][2]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                    <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                          method="get">
+                        <span name="cellY" th:value="0"></span>
+                        <span name="cellX" th:value="2"></span>
+                        <input type="submit">
+                                                    </form>
+                    </span>
+            </td>
+        </tr>
+        <tr>
+            <td th:switch="${grid[1][0]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                    <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                          method="get">
+                        <span name="cellY" th:value="1"></span>
+                        <span name="cellX" th:value="0"></span>
+                        <input type="submit">
+                                                    </form>
+                    </span>
+            </td>
+            <td th:switch="${grid[1][1]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                      method="get">
+                        <span name="cellY" th:value="1"></span>
+                        <span name="cellX" th:value="1"></span>
+                        <input type="submit">
+                                                </form>
+                    </span>
+            </td>
+            <td th:switch="${grid[1][2]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                      method="get">
+                        <span name="cellY" th:value="1"></span>
+                        <span name="cellX" th:value="2"></span>
+                        <input type="submit">
+                                                </form>
+                    </span>
+            </td>
+        </tr>
+        <tr>
+            <td th:switch="${grid[2][0]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                    <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                          method="get">
+                        <span name="cellY" th:value="2"></span>
+                        <span name="cellX" th:value="0"></span>
+                        <input type="submit">
+                                                    </form>
+                    </span>
+            </td>
+            <td th:switch="${grid[2][1]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                    <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                          method="get">
+                        <span name="cellY" th:value="2"></span>
+                        <span name="cellX" th:value="1"></span>
+                        <input type="submit">
+                                                    </form>
+                    </span>
+            </td>
+            <td th:switch="${grid[2][2]}">
+                <span th:case="'x'"><div class="letter x-letter"></div></span>
+                <span th:case="'o'"><div class="letter o-letter"></div></span>
+                <span th:case="*">
+                                                    <form action="#" th:action="@{/play}" th:object="${cellinformation}"
+                                                          method="get">
+                        <span name="cellY" th:value="2"></span>
+                        <span name="cellX" th:value="2"></span>
+                        <input type="submit">
+                                                    </form>
+                    </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

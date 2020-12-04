@@ -17,7 +17,7 @@ class TictactoeApplicationTests {
         char[][] tab = {{'x', '0', 'x'}, {'x', '0', '0'}, {'x', '0', '0'}};
         for (char[] line : tab) {
             for (char character : line) {
-                Assert.isTrue(character == 'x' || character == '0', "Grid contains no handle character");
+                Assert.isTrue(character == 'x' || character == '0' || character == ' ', "Grid contains no handle character");
             }
         }
     }
@@ -28,7 +28,7 @@ class TictactoeApplicationTests {
         // TODO Implement and call the service that check that
         for (char[] line : tab) {
             for (char character : line) {
-                    Assert.isTrue(character == 'x' || character == '0' || character == ' ', "Grid is not full");
+                    Assert.isTrue(character == 'x' || character == '0', "Grid is not full");
             }
         }
     }
