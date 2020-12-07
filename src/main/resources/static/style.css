@@ -35,3 +35,17 @@ input
     width: 100%;
     height: 100%;
 }
+
+.add-letter-button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border: 0;
+}
+
+.add-letter-div
+{
+width : 100%;
+height : 100%;
+}
