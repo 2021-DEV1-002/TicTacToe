@@ -4,58 +4,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class GameController {
 
-    private char[][] grid;
-    int player;
-    boolean nobodyWin;
-    boolean gameEnd;
+    private GameInformation gameInformation;
+    private CellInformation cellInformation;
 
     @Autowired
     private GameService gameService;
 
     public GameController() {
-        this.initVariables();
     }
 
     /**
-     * Init class variables
+     * Call the method that init the variables
      */
-    private void initVariables() {
-        this.player = 0;
-        this.gameEnd = false;
-        this.nobodyWin = false;
-        grid = new char[][]{{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+    @PostConstruct
+    private void init() {
+        this.gameInformation = this.gameService.initVariables();
     }
 
     /**
      * Main service that allows to play the game
-     * @param model model of the page
+     *
+     * @param model   model of the page
      * @param request request with param
      * @return the html file
      */
-    @RequestMapping("/play")
+    @GetMapping("/play")
     public String play(Model model, HttpServletRequest request) {
-        this.gameService.setLetterAndChangePlayer(this.player, this.gameEnd, this.grid, this.nobodyWin, request);
-        model.addAttribute("grid", grid);
-        model.addAttribute("gameEnd", gameEnd);
-        model.addAttribute("player", player);
-        model.addAttribute("nobodyWin", nobodyWin);
+        this.gameService.setLetterAndChangePlayer(this.gameInformation, request);
+        model.addAttribute("gameInfo", this.gameInformation);
+        model.addAttribute("cellInfo", this.cellInformation);
         return ("play");
     }
 
     /**
      * Service to reset the data
+     *
      * @return a redirection to the html file
      */
     @GetMapping("/reset")
     public String reset() {
-        this.initVariables();
+        this.init();
+        return "redirect:/play";
+    }
+
+    /**
+     * Service to redirect to /play
+     *
+     * @return a redirection to the html file
+     */
+    @GetMapping("/")
+    public String home() {
         return "redirect:/play";
     }
 }

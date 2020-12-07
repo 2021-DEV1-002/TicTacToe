@@ -5,15 +5,14 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 
 @Service
-public class GameService
-{
+public class GameService {
     /**
      * is game finished (all the cells are filled) ?
+     *
      * @param grid the table
      * @return true if the table is filled
      */
-    public boolean isGridFilled(char[][] grid)
-    {
+    public boolean isGridFilled(char[][] grid) {
         boolean gameFinished = true;
         for (char[] line : grid) {
             for (char character : line) {
@@ -26,10 +25,11 @@ public class GameService
 
     /**
      * Check if the user has won
+     *
      * @param letter letter used in the table
      * @return true if user won
      */
-    public boolean doesUserWon(char [][] grid, char letter) {
+    public boolean doesUserWon(char[][] grid, char letter) {
         // Check the lines
         if (grid[0][0] == letter && grid[0][1] == letter && grid[0][2] == letter)
             return true;
@@ -54,10 +54,11 @@ public class GameService
 
     /**
      * Update the table with the correct letter
-     * @param param the param of the url
+     *
+     * @param param  the param of the url
      * @param letter the letter of the user
      */
-    private void updateGrid(char [][] grid, String param, char letter) {
+    private void updateGrid(char[][] grid, String param, char letter) {
         if (param.compareTo(CellPosition.LEFT_TOP.value) == 0)
             grid[0][0] = letter;
         if (param.compareTo(CellPosition.MIDDLE_TOP.value) == 0)
@@ -83,21 +84,34 @@ public class GameService
      * 1) Has user played ? If yes, we retrieve the location of the table and update the table with the letter
      * 2) Has user won ? If yes, gameEnd to true
      * 3) Is the table filled ? If yes, nobodyWin to true, else the played changes
+     *
      * @param request
      */
-    public void setLetterAndChangePlayer(int player, boolean gameEnd, char[][] grid, boolean nobodyWin, HttpServletRequest request) {
+    public void setLetterAndChangePlayer(GameInformation gameInformation, HttpServletRequest request) {
         if (request.getParameterMap().containsKey("submitButton")) {
             String param = request.getParameter("submitButton");
-            char letter = player == 0 ? 'x' : 'o';
-            this.updateGrid(grid, param, letter);
-            if (this.doesUserWon(grid, letter)) {
-                gameEnd = true;
+            char letter = gameInformation.player == 0 ? 'x' : 'o';
+            this.updateGrid(gameInformation.grid, param, letter);
+            if (this.doesUserWon(gameInformation.grid, letter)) {
+                gameInformation.gameEnd = true;
             } else {
-                if (this.isGridFilled(grid))
-                    nobodyWin = true;
+                if (isGridFilled(gameInformation.grid))
+                    gameInformation.nobodyWin = true;
                 else
-                    player = player == 0 ? 1 : 0;
+                    gameInformation.player = gameInformation.player == 0 ? 1 : 0;
             }
         }
+    }
+
+    /**
+     * Init class variables
+     */
+    public GameInformation initVariables() {
+        GameInformation gameInformation = new GameInformation();
+        gameInformation.player = 0;
+        gameInformation.gameEnd = false;
+        gameInformation.nobodyWin = false;
+        gameInformation.grid = new char[][]{{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
+        return gameInformation;
     }
 }

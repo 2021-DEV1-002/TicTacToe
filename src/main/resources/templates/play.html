@@ -11,38 +11,38 @@
 
 </head>
 <body>
-<h1>Play Tic Tac Toe !</h1>
+<h1 class="text-center">Tic Tac Toe</h1>
 <br><br>
 <div class="container">
-    <p>Player : <span th:text="${player}"></span></p>
+    <p>Player : <span th:text="${gameInfo.player}"></span></p>
     <table class="table">
         <tbody>
         <tr>
-            <td th:switch="${grid[0][0]}">
+            <td th:switch="${gameInfo.grid[0][0]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton" value="LEFT_TOP"></button>
                     </form>
                 </div>
             </td>
-            <td th:switch="${grid[0][1]}">
+            <td th:switch="${gameInfo.grid[0][1]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton" value="MIDDLE_TOP"></button>
                     </form>
                 </div>
             </td>
-            <td th:switch="${grid[0][2]}">
+            <td th:switch="${gameInfo.grid[0][2]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton" value="RIGHT_TOP"></button>
                     </form>
@@ -50,33 +50,33 @@
             </td>
         </tr>
         <tr>
-            <td th:switch="${grid[1][0]}">
+            <td th:switch="${gameInfo.grid[1][0]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton"
                                 value="LEFT_MIDDLE"></button>
                     </form>
                 </div>
             </td>
-            <td th:switch="${grid[1][1]}">
+            <td th:switch="${gameInfo.grid[1][1]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton"
                                 value="MIDDLE_MIDDLE"></button>
                     </form>
                 </div>
             </td>
-            <td th:switch="${grid[1][2]}">
+            <td th:switch="${gameInfo.grid[1][2]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton"
                                 value="RIGHT_MIDDLE"></button>
@@ -85,33 +85,33 @@
             </td>
         </tr>
         <tr>
-            <td th:switch="${grid[2][0]}">
+            <td th:switch="${gameInfo.grid[2][0]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton"
                                 value="LEFT_BOTTOM"></button>
                     </form>
                 </div>
             </td>
-            <td th:switch="${grid[2][1]}">
+            <td th:switch="${gameInfo.grid[2][1]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton"
                                 value="MIDDLE_BOTTOM"></button>
                     </form>
                 </div>
             </td>
-            <td th:switch="${grid[2][2]}">
+            <td th:switch="${gameInfo.grid[2][2]}">
                 <span th:case="'x'"><div class="letter x-letter"></div></span>
                 <span th:case="'o'"><div class="letter o-letter"></div></span>
                 <div th:case="*" class="add-letter-div">
-                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInformation}"
+                    <form class="add-letter-div" action="#" th:action="@{/play}" th:object="${cellInfo}"
                           method="get">
                         <button class="add-letter-button" type="submit" name="submitButton"
                                 value="RIGHT_BOTTOM"></button>
@@ -122,8 +122,8 @@
         </tbody>
     </table>
     <br>
-    <p th:if="${gameEnd}">Player <span th:text="${player} == 0 ? '0' : '1'"></span> has won !</p>
-    <p th:if="${nobodyWin}">Game ended, nobody won</p>
+    <p th:if="${gameInfo.gameEnd}">Player <span th:text="${gameInfo.player} == 0 ? '0' : '1'"></span> has won !</p>
+    <p th:if="${gameInfo.nobodyWin}">Game ended, nobody won</p>
     <form class="add-letter-div" action="#" th:action="@{/reset}" method="get">
         <button class="btn btn-primary" type="submit">Reset</button>
     </form>
