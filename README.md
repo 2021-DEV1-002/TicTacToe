@@ -1,6 +1,6 @@
-## TicTacToe
+# TicTacToe
 
-#How to compile and run ?
+## How to compile and run ?
 1) Open IDE (Intellij, Eclipse for ex)
 2) Execute maven clean install
 3) Execute Spring-Boot:run
